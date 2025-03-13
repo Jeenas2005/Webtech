@@ -14,7 +14,6 @@
         }
         
         body {
-            font-family: 'Roboto', sans-serif;
             color: #0e0e0e;
             font-family: 'Times New Roman', Times, serif;
             background-image: url('book.png');
@@ -83,7 +82,6 @@
         .dropdown:hover .dropbtn {
             background-color: #ddd;
         }
-        /* Dropdown Content (Hidden by Default) */
         
         .dropdown-content {
             display: none;
@@ -94,7 +92,6 @@
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
             border-radius: 6px;
         }
-        /* Links inside the dropdown */
         
         .dropdown-content a {
             color: black;
@@ -129,6 +126,10 @@
             text-align: center;
             font-size: 1.2rem;
             margin: 20px;
+        }
+        
+        p {
+            font-size: 18px;
         }
         
         .grid {
@@ -201,20 +202,18 @@
             border: 1px solid #090808;
             padding: 10px;
             background-color: #276cec;
-            font-size: 1rem;
+            font-size: 1.6rem;
             color: #fff;
-            /* Set all table cells to white */
         }
         
         td {
             background-color: #faf6f9;
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #0e0b0b;
         }
         
         tr:hover {
             background-color: #f1f1f1;
-            /* Subtle hover effect */
         }
         
         .member-section {
@@ -238,12 +237,12 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="member.html">
-                <img src="logo.png" alt="Logo" class="rounded-circle" width="100" height="100">
+                <img src="logo.png" alt="Logo" class="rounded-circle" width="50" height="60">
             </a>
-            <h1 class="me-auto">SECRET BIBLIOSPHERE</h1>
+            <h1 class="text-primary text-left mt-3">SECRET BIBLIOSPHERE</h1>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -252,20 +251,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="review.html">Reviews</a>
                     </li>
-
-                    <!-- Corrected Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" role="button" data-bs-toggle="dropdown" aria-expanded="false">Book Category
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="nav-link dropdown-toggle" href="#" id="bookCategoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Book Category
+                    </a>
+                        <ul class="dropdown-menu" aria-labelledby="bookCategoryDropdown">
                             <li><a class="dropdown-item" href="fiction.html">Fiction</a></li>
                             <li><a class="dropdown-item" href="mystery.html">Mystery & Thriller</a></li>
-                            <li><a class="dropdown-item" href="sci-fi.html">Science Fiction</a></li>
+                            <li><a class="dropdown-item" href="sci-fi.html">Horror</a></li>
                             <li><a class="dropdown-item" href="fantasy.html">Fantasy</a></li>
-                            <li><a class="dropdown-item" href="non-fiction.html">Non-Fiction</a></li>
                         </ul>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About</a>
                     </li>
@@ -277,14 +273,12 @@
         </div>
     </nav>
 
-
-    <h2>Step into the world of books - turn the page to new adventures...</h2>
-
-    <h3>We're thrilled to have you here! This is a space where book lovers from all over come together to explore new stories, share thoughts, and dive into engaging discussions. Whether you're a casual reader or a passionate bookworm, you'll find a community
+    <h2 class="fw-bold text-center mt-3">Step into the world of books - turn the page to new adventures...</h2>
+    <h3 class="fw-bold text-center mt-3">
+        We're thrilled to have you here! This is a space where book lovers from all over come together to explore new stories, share thoughts, and dive into engaging discussions. Whether you're a casual reader or a passionate bookworm, you'll find a community
         that celebrates the magic of books. Feel free to introduce yourself, share your current read, and join in on exciting conversations. Let’s turn the page to new adventures together happy reading!</h3>
+    <h2 class="fw-bold text-center mt-3">Featured Books</h2>
 
-
-    <h2>Featured Books</h2>
     <div class="grid">
         <div class="card">
             <img src="1.png" alt="The Great Gatsby">
@@ -314,7 +308,7 @@
             </div>
         </div>
     </div>
-    <h2>Famous English Novels</h2>
+    <h2 class="fw-bold text-center mt-1">Famous English Novels</h2>
     <div class="container mt-3">
         <table class="table table-striped">
             <thead>
@@ -328,37 +322,63 @@
                 <tr>
                     <td>Pride and Prejudice</td>
                     <td>Jane Austen</td>
-                    <td>" It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife. "</td>
+                    <td>"It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife."</td>
                 </tr>
                 <tr>
                     <td>1984</td>
                     <td>George Orwell</td>
-                    <td>"Big Brother is watching you. "</td>
+                    <td>"Big Brother is watching you."</td>
                 </tr>
                 <tr>
                     <td>To Kill a Mockingbird</td>
                     <td>Harper Lee</td>
-                    <td>"You never really understand a person until you consider things from his point of view. "</td>
+                    <td>"You never really understand a person until you consider things from his point of view."</td>
                 </tr>
                 <tr>
                     <td>Moby-Dick</td>
                     <td>Herman Melville</td>
-                    <td>"Call me Ishmael. "</td>
+                    <td>"Call me Ishmael."</td>
                 </tr>
                 <tr>
                     <td>Great Expectations</td>
                     <td>Charles Dickens</td>
-                    <td>"Ask no questions, and you’ll be told no lies. "</td>
+                    <td>"Ask no questions, and you’ll be told no lies."</td>
+                </tr>
+                <tr>
+                    <td>The Catcher in the Rye</td>
+                    <td>J.D. Salinger</td>
+                    <td>"What really knocks me out is a book that, when you're all done reading it, you wish the author that wrote it was a terrific friend of yours."</td>
+                </tr>
+                <tr>
+                    <td>Frankenstein</td>
+                    <td>Mary Shelley</td>
+                    <td>"Beware; for I am fearless, and therefore powerful."</td>
+                </tr>
+                <tr>
+                    <td>The Great Gatsby</td>
+                    <td>F. Scott Fitzgerald</td>
+                    <td>"So we beat on, boats against the current, borne back ceaselessly into the past."</td>
+                </tr>
+                <tr>
+                    <td>Wuthering Heights</td>
+                    <td>Emily Brontë</td>
+                    <td>"Whatever our souls are made of, his and mine are the same."</td>
+                </tr>
+                <tr>
+                    <td>Dracula</td>
+                    <td>Bram Stoker</td>
+                    <td>"We learn from failure, not from success!"</td>
+                </tr>
+                <tr>
+                    <td>Little Women</td>
+                    <td>Louisa May Alcott</td>
+                    <td>"I am not afraid of storms, for I am learning how to sail my ship."</td>
                 </tr>
             </tbody>
         </table><br>
     </div>
-
-
-
-
     <div class="member-section ">
-        <h2>Join the Book Club</h2><br>
+        <h2 class="fw-bold text-center mt-3">Join the Book Club</h2><br>
         <p>Become a member and connect with book lovers worldwide. Enjoy exclusive book discussions, reviews, and recommendations.</p><br>
         <a href="member.html " class="button ">Join Now</a>
     </div>
