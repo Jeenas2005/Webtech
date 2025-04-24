@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Book Club</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        
+        button {
+            cursor: pointer;
+            margin: 5px;
+            padding: 8px 12px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        button:hover {
+            background: #0056b3;
+        }
+        
+        select {
+            margin-left: 10px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>📚 Welcome to the Online Book Club</h1>
+        <p>
+            Join our vibrant community of book lovers! Here, you can explore a variety of books, add them to your personal reading list, and track your progress as you read. Stay motivated and share your journey with fellow members. 📖✨
+        </p>
+
+        <div class="section book-list">
+            <h2>Available Books 📖</h2>
+            <p>Browse our collection and add books to your reading list.</p>
+            <input type="text" id="search" placeholder="Search books..." onkeyup="filterBooks()">
+            <ul id="book-list">
+                <li><span><b>The Great Gatsby</b> - F. Scott Fitzgerald</span> <button onclick="addToCart('The Great Gatsby')">Add to Cart</button></li>
+                <li><span><b>To Kill a Mockingbird</b> - Harper Lee</span> <button onclick="addToCart('To Kill a Mockingbird')">Add to Cart</button></li>
+                <li><span><b>1984</b> - George Orwell</span> <button onclick="addToCart('1984')">Add to Cart</button></li>
+                <li><span><b>Pride and Prejudice</b> - Jane Austen</span> <button onclick="addToCart('Pride and Prejudice')">Add to Cart</button></li>
+            </ul>
+        </div>
+
+        <div class="section cart">
+            <h2>🛒 Your Reading Cart</h2>
+            <p>These books are saved for you to read later. You can remove them anytime.</p>
+            <ul id="cart-list"></ul>
+            <button onclick="goToProgressTracker()">📊 Go to Progress Tracker</button>
+        </div>
+
+        <div class="section progress-tracker">
+            <h2>📊 Reading Progress</h2>
+            <p>Track the books you're reading and update your progress.</p>
+            <ul id="progress-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let progress = JSON.parse(localStorage.getItem("progress")) || {};
+
+        function addToCart(book) {
+            if (!cart.includes(book)) {
+                cart.push(book);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                updateCart();
+            }
+        }
+
+        function removeFromCart(book) {
+            cart = cart.filter(item => item !== book);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartList = document.getElementById("cart-list");
+            cartList.innerHTML = "";
+            cart.forEach(book => {
+                const li = document.createElement("li");
+                li.innerHTML = `<b>${book}</b> <button onclick="removeFromCart('${book}')">Remove</button>`;
+                cartList.appendChild(li);
+            });
+        }
+
+        function goToProgressTracker() {
+            localStorage.setItem("progress", JSON.stringify(progress));
+            window.location.href = "progress.html"; // Redirect to the progress page
+        }
+
+        function updateProgressTracker() {
+            const progressList = document.getElementById("progress-list");
+            progressList.innerHTML = "";
+            cart.forEach(book => {
+                let currentStatus = progress[book] || "Not Started";
+                const li = document.createElement("li");
+                li.innerHTML = `<b>${book}</b> - 
+                    <select onchange="updateProgress(this, '${book}')">
+                        <option value="Not Started" ${currentStatus === "Not Started" ? "selected" : ""}>Not Started</option>
+                        <option value="In Progress" ${currentStatus === "In Progress" ? "selected" : ""}>In Progress</option>
+                        <option value="Completed" ${currentStatus === "Completed" ? "selected" : ""}>Completed</option>
+                    </select>`;
+                progressList.appendChild(li);
+            });
+        }
+
+        function updateProgress(select, book) {
+            progress[book] = select.value;
+            localStorage.setItem("progress", JSON.stringify(progress));
+        }
+
+        function filterBooks() {
+            let query = document.getElementById("search").value.toLowerCase();
+            let books = document.querySelectorAll("#book-list li");
+            books.forEach(book => {
+                book.style.display = book.textContent.toLowerCase().includes(query) ? "block" : "none";
+            });
+        }
+
+        updateCart();
+        updateProgressTracker();
+    </script>
+
+</body>
+
+</html>
